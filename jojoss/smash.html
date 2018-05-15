@@ -1,0 +1,183 @@
+ <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="auther" content="放风" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>翻牌计算器</title>
+  <style type="text/css">
+    .box{
+      display: -webkit-flex; /* Safari */
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      }
+  .container{
+    height:auto;
+  }
+  .imgbtn {
+    padding: 3px;
+    border: 1px solid transparent;
+    }
+    .imgbtn:hover {
+      border: 1px solid red;
+      }
+  </style>
+  <script type="text/javascript">
+
+function calc(){
+  var base = document.getElementById("baseatk").value;
+  var cap1 = document.getElementById("cap1").value*0.01;
+  var cap2 = document.getElementById("cap2").value*0.01;
+  var LINK = document.getElementById("LINK").value*0.01;
+  var panelatk = Math.round(Math.round(Math.round(base*(1+cap1))*(1+cap2))*(1+LINK));
+
+  addc = document.getElementById("adds").cb;
+  addn = document.getElementById("adds").add1;
+  baseadd=1;
+  for (i=0;i<addc.length;++ i){
+    if (addc[i].checked){baseadd=baseadd + addn[i].value*0.01}
+    };
+
+  multis1c = document.getElementById("multis1").cb;
+  multis1n = document.getElementById("multis1").multi1;
+  basemulti=1;
+  for (i=0;i<multis1c.length;++ i){
+    if (multis1c[i].checked){basemulti=basemulti * multis1n[i].value*0.01}
+    };
+  if (basemulti == 0){
+    basemulti = 1;
+    }
+
+  multis2c = document.getElementById("multis2").cb;
+  multis2n = document.getElementById("multis2").multi2;
+  for (i=0;i<multis2c.length;++ i){
+    if (multis2c[i].checked){basemulti=basemulti * multis2n[i].value}
+    };
+  if (basemulti == 0){
+    basemulti = 1;
+    }
+
+
+  smashaddc = document.getElementById("smashadd").cb;
+  smashaddn = document.getElementById("smashadd").smashadd1;
+  smashadds=0;
+  for (i=0;i<smashaddc.length;++ i){
+    if (smashaddc[i].checked){smashadds=smashadds + smashaddn[i].value*0.01}
+    };
+
+  smashmultic = document.getElementById("smashmulticb");
+  smashmultin = document.getElementById("smashmultinb");
+  smashmultis=1;
+  if (smashmultic.checked){smashmultis=smashmultis + smashmultin.value*0.01*50}
+
+
+  document.getElementById("smashopt").innerHTML = Math.round(
+    panelatk*baseadd*basemulti*(1.5+smashadds)*smashmultis
+    ).toLocaleString('en-US');
+
+  document.getElementById("hit").innerHTML = Math.round(panelatk*baseadd*basemulti).toLocaleString('en-US');
+}
+
+  </script>
+ </head>
+ <body class="box" onload="calc()">
+<div class="container">
+  <span>翻翻翻翻翻翻 @放风</span>
+  <hr>
+  <span>面板atk : </span><input type="number" id="baseatk" value="70000" min="0" max="10000000" oninput="calc()"/>
+  <br/>
+  <span>队长加攻1 : </span><input type="number" id="cap1" value="100" min="0" max="100" oninput="calc()"/>
+  <br/>
+  <span>队长加攻2 : </span><input type="number" id="cap2" value="70" min="0" max="100" oninput="calc()"/>
+  <br/>
+  <span>LINK : </span><input type="number" id="LINK" value="0" min="0" max="100" oninput="calc()"/>
+  <hr>
+  <!-加法开始->
+  <form id="adds">
+    <label><input type="checkbox" name="cb" onchange="calc()" >死西 : </label><input type="number" name="add1" id="add0" value="2218" min="1250" max="2550" oninput="calc()"/>%
+    <label><input type="checkbox" name="cb" onchange="calc()" >半仙 : </label><input type="number" name="add1" id="add0" value="950" min="500" max="1150" oninput="calc()"/>%
+    
+        <br/>
+    <label><input type="checkbox" name="cb" onchange="calc()" >车花 : </label><input type="number" name="add1" id="add0" value="400" min="400" max="800" oninput="calc()"/>%
+    <label><input type="checkbox" name="cb" onchange="calc()" checked>马乔 : </label><input type="number" name="add1" id="add0" value="300" min="300" max="500" oninput="calc()"/>%
+    <br/>
+    <label><input type="checkbox" name="cb" onchange="calc()" >公平 : </label><input type="number" name="add1" id="add0" value="400" min="0" max="400" oninput="calc()"/>%
+    <label><input type="checkbox" name="cb" onchange="calc()">塔承 : </label><input type="number" name="add1" value="120" min="0" max="5000" oninput="calc()"/>%
+    <br/>
+    <label><input type="checkbox" name="cb" onchange="calc()">塔牛 : </label><input type="number" name="add1" value="50" min="0" max="140" oninput="calc()"/>%
+    <label><input type="checkbox" name="cb" onchange="calc()">木大 : </label><input type="number" name="add1" value="100" min="100" max="200" oninput="calc()"/>%
+    <br/>
+    <label><input type="checkbox" name="cb" onchange="calc()" checked>吉良爹(绿): </label><input type="number" name="add1" value="200" min="50" max="200" oninput="calc()"/>%
+    <label><input type="checkbox" name="cb" onchange="calc()">草皇 : </label><input type="number" name="add1" value="400" min="400" max="800" oninput="calc()"/>%
+    <br/>
+    <label><input type="checkbox" name="cb" onchange="calc()">sr早人 : </label><input type="number" name="add1" value="25" min="25" max="100" oninput="calc()"/>%
+    <label><input type="checkbox" name="cb" onchange="calc()">sp鸭 : </label><input type="number" name="add1" value="50" min="50" max="1500" oninput="calc()"/>%
+    <br/>
+    <label><input type="checkbox" name="cb" onchange="calc()">穿心 : </label><input type="number" name="add1" value="100" min="100" max="300" oninput="calc()"/>%
+    <label><input type="checkbox" name="cb" onchange="calc()">降临亿泰 : </label><input type="number" name="add1" value="150" min="150" max="1300" oninput="calc()"/>%
+    <br/>
+    <label><input type="checkbox" name="cb" onchange="calc()">自制大乔 : </label><input type="number" name="add1" value="700" min="50" max="5000" oninput="calc()"/>%
+    <label><input type="checkbox" name="cb" onchange="calc()">sr彩姐 : </label><input type="number" name="add1" value="300" min="100" max="300" oninput="calc()"/>%
+
+    </form>
+  <!-加法结束->
+  <hr>
+  <!-普通乘法开始->
+  <form id="multis1">
+    <label><input type="checkbox" name="cb" onchange="calc()" >蓝胖 : </label><input type="number" name="multi1" id="add0" value="300" min="0" max="300" oninput="calc()"/>%
+    <label><input type="checkbox" name="cb" onchange="calc()" >达比弟 : </label><input type="number" name="multi1" id="add0" value="150" min="150" max="250" oninput="calc()"/>%<br/>
+    <label><input type="checkbox" name="cb" onchange="calc()" >sp花子 : </label><input type="number" name="multi1" id="add0" value="150" min="150" max="150" oninput="calc()"/>%
+    <label><input type="checkbox" name="cb" onchange="calc()" >乔妈 : </label><input type="number" name="multi1" id="add0" step="1" value="150" min="150" max="250" oninput="calc()"/>%<br/>
+    <label><input type="checkbox" name="cb" onchange="calc()" >红辣椒 : </label><input type="number" name="multi1" id="add0" step="1" value="250" min="250" max="400" oninput="calc()"/>%
+    <label><input type="checkbox" name="cb" onchange="calc()" >念承花 : </label><input type="number" name="multi1" id="add0" step="1" value="250" min="250" max="500" oninput="calc()"/>%<br/>
+    <label><input type="checkbox" name="cb" onchange="calc()" >黑西 : </label><input type="number" name="multi1" id="add0" step="1" value="110" min="350" max="500" oninput="calc()"/>%<br/>
+  </form>
+<!-普通乘法结束->
+<!-倍数乘法开始->
+  <form id="multis2">
+    <label><input type="checkbox" name="cb" onchange="calc()" >胡子师傅 : </label><input type="number" name="multi2" value="2" min="2" max="2" oninput="calc()"/>倍
+    <label><input type="checkbox" name="cb" onchange="calc()" >新白承 : </label><input type="number" name="multi2" step="0.01" value="1.5" min="1.5" max="2.5" oninput="calc()"/>倍<br/>
+    <label><input type="checkbox" name="cb" onchange="calc()" >康三 : </label><input type="number" name="multi2" step="0.01" value="6" min="1.5" max="6" oninput="calc()"/>倍
+    <label><input type="checkbox" name="cb" onchange="calc()" >承花(绿) : </label><input type="number" name="multi2" step="0.01" value="2" min="2" max="12" oninput="calc()"/>倍<br/>
+    <label><input type="checkbox" name="cb" onchange="calc()" >北斗 : </label><input type="number" name="multi2" step="0.01" value="2" min="2" max="4" oninput="calc()"/>倍<br/>
+    <label><input type="checkbox" name="cb" onchange="calc()" >戒花子 : </label><input type="number" name="multi2" step="0.01" value="1.5" min="1.5" max="2.5" oninput="calc()"/>倍
+    <label><input type="checkbox" name="cb" onchange="calc()" >黑瓜 : </label><input type="number" name="multi2" step="0.01" value="1.5" min="1.5" max="12.5" oninput="calc()"/>倍<br/>
+  </form>
+<!-倍数乘法结束->
+
+  <hr>
+  <form id="smashadd">
+    <label><input type="checkbox" name="cb" onchange="calc()" checked>水哥 : </label><input type="number" name="smashadd1" id="add0" value="350" min="350" max="600" oninput="calc()"/>%
+    <label><input type="checkbox" name="cb" onchange="calc()" >红承仗 : </label><input type="number" name="smashadd1" id="add0" value="250" min="250" max="900" oninput="calc()"/>%<br/>
+    <label><input type="checkbox" name="cb" onchange="calc()" checked>签到水哥 : </label><input type="number" name="smashadd1" id="add0" value="186" min="80" max="800" oninput="calc()"/>%<br/>
+    <label><input type="checkbox" name="cb" onchange="calc()" >康二 : </label><input type="number" name="smashadd1" id="add0" value="300" min="300" max="500" oninput="calc()"/>%
+    <label><input type="checkbox" name="cb" onchange="calc()" >极星康一 : </label><input type="number" name="smashadd1" id="add0" value="100" min="100" max="500" oninput="calc()"/>%<br/>
+    <label><input type="checkbox" name="cb" onchange="calc()" >悠悠球二乔 : </label><input type="number" name="smashadd1" id="add0" value="200" min="200" max="400" oninput="calc()"/>%<br/>
+  </form>
+  <hr>
+  <div id="smashmulti">
+    <label><input type="checkbox" id="smashmulticb" onchange="calc()" >外星人 : </label><input type="number" name="smashmulti1" id="smashmultinb" value="10" min="0" max="10" oninput="calc()"/><<span>(场上道具数，默认满被动)</span>
+  </div>
+  <hr>
+  <div>
+    平撞：<span id="hit"  style="color:red">还未输入</span>
+    <br/>
+    翻牌：<span id="smashopt"  style="color:red">还未输入</span>
+    <br/>
+  </div>
+  <hr>
+  <div>
+    <span>20180211.公式修正，数据补充</span><br/>
+    <span>20171209.公式修正</span><br/>
+    <span>20171025.第一版</span><br/>
+    <hr>
+  </div>
+  <ul>
+    <li><a  class="imgbtn" href="./smash.html" target="_blank" title="">翻牌计算器</a></li>
+    <li><a  class="imgbtn" href="./atkcalc.html" target="_blank" title="">超三吉良计算器</a></li>
+  </ul>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,212 @@
+ <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="auther" content="放风" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>乔西计算器</title>
+  <style type="text/css">
+    .box{
+      display: -webkit-flex; /* Safari */
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      }
+  .container{
+    height:auto;
+  }
+  .imgbtn {
+    padding: 3px;
+    border: 1px solid transparent;
+    }
+    .imgbtn:hover {
+      border: 1px solid red;
+      }
+  </style>
+  <script type="text/javascript">
+    function ElemId(x) {
+      if (typeof x == "string") return document.getElementById(x);
+        return x;
+      };
+    var MultiBeidong = {
+      "hongchenghua": {
+        0:100,1:250,2:263,3:276,4:289,5:303,6:316,7:329,8:342,9:355,10:368,11:382,12:395,13:408,14:421,15:434,16:447,17:461,18:474,19:489,20:500
+      },
+      "lajiao" : {
+        0:100,1:250,2:258,3:266,4:274,5:282,6:289,7:297,8:305,9:313,10:321,11:329,12:337,13:345,14:353,15:361,16:368,17:376,18:384,19:392,20:400
+      },
+      "qiaoma" : {
+        0:100,1:150,2:155,3:161,4:166,5:171,6:176,7:182,8:187,9:192,10:197,11:203,12:208,13:213,14:218,15:224,16:229,17:234,18:239,19:245,20:250
+      },
+
+    }
+
+  var asdf = "lajiao";
+function calc(){
+
+  var base = ElemId("baseatk").value;
+  var cap1 = ElemId("cap1").value*0.01;
+  var cap2 = ElemId("cap2").value*0.01;
+  var LINK = ElemId("LINK").value*0.01;
+  var panelatk = Math.round(Math.round(Math.round(base*(1+cap1))*(1+cap2))*(1+LINK));
+
+  addc = ElemId("adds").cb;
+  addn = ElemId("adds").add1;
+  baseadd=0;
+  for (i=0;i<addc.length;++ i){
+    if (addc[i].checked){baseadd=baseadd + addn[i].value*0.01}
+    };
+
+
+  var jkl = ElemId(asdf).value;
+  var multi0V = MultiBeidong[asdf][jkl]*0.01;
+//alert(multi0V);
+
+
+  multis2c = ElemId("multis2").cb;
+  multis2n = ElemId("multis2").multi2;
+  basemultiOpt=1;
+  for (i=0;i<multis2c.length;++ i){
+    if (multis2c[i].checked){
+      basemultiOpt = basemultiOpt * MultiBeidong[multis2n[i].id][multis2n[i].value]*0.01}
+    };
+  if (basemultiOpt == 0){
+    basemultiOpt = 1;
+    }
+
+  FixedMultisC = ElemId("FixedMultis").cb;
+  FixedMultisNum = ElemId("FixedMultis").FixedMultisN;
+  FixedMultisOpt = 1;
+  for (i=0;i<FixedMultisC.length;++ i){
+    if (FixedMultisC[i].checked){FixedMultisOpt=FixedMultisOpt * FixedMultisNum[i].value}
+    };
+  if (FixedMultisOpt == 0){
+    FixedMultisOpt = 1;
+  };
+
+  OneMoreMultisC = ElemId("OneMoreMultisCB");
+  OneMoreMultisNum = ElemId("qiaoma");
+  OneMoreMultisOpt = 1;
+  if (OneMoreMultisC.checked){
+    OneMoreMultisOpt = OneMoreMultisOpt * MultiBeidong[OneMoreMultisNum.id][OneMoreMultisNum.value]*0.01;
+  };
+  if (OneMoreMultisOpt == 0){
+    OneMoreMultisOpt = 1;
+  };
+
+  ElemId("hit").innerHTML = Math.floor(
+    Math.floor(
+      Math.floor(
+        panelatk*(1+baseadd)
+        )*basemultiOpt
+      )
+    ).toLocaleString('en-US');
+
+  ElemId("1stCS").innerHTML = Math.floor(
+    Math.floor(
+      Math.floor(
+        panelatk*(350+baseadd)
+        )*basemultiOpt
+      )*FixedMultisOpt
+    ).toLocaleString('en-US');
+
+  ElemId("1stCSripple").innerHTML = Math.floor(
+    Math.floor(
+      Math.floor(
+        panelatk*(20+baseadd)
+        )*basemultiOpt
+      )*FixedMultisOpt
+    ).toLocaleString('en-US');
+
+  ElemId("2stCS").innerHTML = Math.floor(
+    Math.floor(
+      Math.floor(
+        Math.floor(
+          panelatk*(350+baseadd)
+          )*basemultiOpt
+        )*FixedMultisOpt)*OneMoreMultisOpt*1.5
+    ).toLocaleString('en-US');
+
+  ElemId("2stCSripple").innerHTML = Math.floor(
+    Math.floor(
+    Math.floor(
+      Math.floor(
+        panelatk*(20+baseadd)
+        )*basemultiOpt
+      )*FixedMultisOpt
+    )*OneMoreMultisOpt*1.5
+
+   ).toLocaleString('en-US');
+
+}
+
+  </script>
+ </head>
+ <body class="box" onload="calc()">
+<div class="container">
+  <span>乔西计算器 @放风</span>
+  <hr>
+  <span>面板atk : </span><input type="number" id="baseatk" value="104038" min="0" max="10000000" oninput="calc()"/>
+  <br/>
+  <span>队长加攻1 : </span><input type="number" id="cap1" value="70" min="0" max="100" oninput="calc()"/>%
+  <br/>
+  <span>队长加攻2 : </span><input type="number" id="cap2" value="0" min="0" max="100" oninput="calc()"/>%
+  <br/>
+  <span>LINK : </span><input type="number" id="LINK" value="0" min="0" max="100" oninput="calc()"/>%
+  <hr>
+  <form id="adds">
+    <label><input type="checkbox" name="cb" onchange="calc()" checked>死西 : </label><input type="number" name="add1" id="add0" value="2218" min="1250" max="2550" oninput="calc()"/>%
+    <label><input type="checkbox" name="cb" onchange="calc()" checked>半仙 : </label><input type="number" name="add1" id="add0" value="950" min="500" max="1150" oninput="calc()"/>%
+    <br/>    
+    <label><input type="checkbox" name="cb" onchange="calc()" >血承 : </label><input type="number" name="add1" id="add0" value="63" min="0" max="500" oninput="calc()"/>%
+    <label><input type="checkbox" name="cb" onchange="calc()" >马乔 : </label><input type="number" name="add1" id="add0" value="300" min="300" max="500" oninput="calc()"/>%
+    <br>
+    <label><input type="checkbox" name="cb" onchange="calc()" >车花 : </label><input type="number" name="add1" id="add0" value="400" min="400" max="800" oninput="calc()"/>%
+
+    <label><input type="checkbox" name="cb" onchange="calc()" >超三辣椒 : </label><input type="number" name="add1" id="add0" value="500" min="500" max="100" oninput="calc()"/>%
+
+    </form>
+  <hr>
+  <form id="OneMoreMultis">
+    <label><input type="checkbox" name="cb" id="OneMoreMultisCB" onchange="calc()" checked>乔妈被动 : </label><input type="number" name="OneMoreMultisN" id="qiaoma" value="10" min="0" max="20" oninput="calc()"/><br/>
+  </form>
+  <form id="multis2">
+    <label><input type="checkbox" name="cb" onchange="calc()" checked>辣椒被动 : </label><input type="number" name="multi2" id="lajiao" value="7" min="0" max="20" oninput="calc()"/>
+    <label><input type="checkbox" name="cb" onchange="calc()" >期间红承花被动 : </label><input type="number" name="multi2" id="hongchenghua" value="1" min="0" max="20" oninput="calc()"/><br/>
+  </form>
+  <form id="FixedMultis">
+    <label><input type="checkbox" name="cb" onchange="calc()" >胡子师傅 : </label><input type="number" name="FixedMultisN" id="add0" value="2" min="2" max="2" oninput="calc()"/>倍<br/>
+    <label><input type="checkbox" name="cb" onchange="calc()" >新白承 : </label><input type="number" name="FixedMultisN" id="add0" step="0.01" value="1.5" min="1.5" max="2.5" oninput="calc()"/>倍<br/>
+  </form>
+      <s>
+</s>
+  <hr>
+
+  <div>
+    <ul>一手
+      <li>平撞：<span id="hit">还未输入</span></li>
+      <li>CS：<span id="1stCS" style="color:red">还未输入</span></li>
+      <li>每层：<span id="1stCSripple" style="color:red">还未输入</span></li>
+
+    </ul>
+    <ul>One More 得意色
+      <li>CS：<span id="2stCS" style="color:red">还未输入</span></li>
+      <li>每层：<span id="2stCSripple" style="color:red">还未输入</span></li>
+
+    </ul>
+  </div>
+  <hr>
+  <div>
+       <span>20171209.公式修正</span><br/>
+<span>171113.第一版</span><br/>
+    <hr>
+  </div>
+  <ul>
+    <li><a  class="imgbtn" href="./qiaoxi.html" target="_blank" title="">乔西计算器</a></li>
+    <li><a  class="imgbtn" href="./smash.html" target="_blank" title="">翻牌计算器</a></li>
+    <li><a  class="imgbtn" href="./atkcalc.html" target="_blank" title="">超三吉良计算器</a></li>
+  </ul>
+</div>
+
+</body>
+</html>

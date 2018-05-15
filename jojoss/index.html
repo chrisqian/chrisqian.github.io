@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="auther" content="放风" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JoJoSS资料汇集</title>
+  <style type="text/css">
+    .box{
+      display: -webkit-flex; /* Safari */
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      }
+  .container{
+    height:auto;
+  }
+  .imgbtn {
+    padding: 3px;
+    border: 1px solid transparent;
+    }
+    .imgbtn:hover {
+      border: 1px solid red;
+      }
+    .open{  }  
+    .closed{  }  
+    .show{ display: block; }  
+    .hide{ display: none; }  
+  </style>
+  <script>  
+        function toggle(span){//span->this  
+            if(span.className=="open"){  
+                span.className="closed";  
+                span.nextElementSibling.className="hide";  
+            }else{//否则  
+                var oldSpan= document.querySelector(".open");  
+                if(oldSpan!=null){  
+                    oldSpan.className="closed";  
+                    oldSpan.nextElementSibling.className="hide";  
+                }  
+                span.className="open";  
+                span.nextElementSibling.className="show"  
+            }  
+        }  
+    </script>  
+ </head>
+ <body class="box">
+<div class="container">
+
+  <ul>
+    <li><a class="imgbtn" href="./smash.html" target="_blank" title="">翻牌计算器</a></li>
+    <li><a class="imgbtn" href="./qiaoxi.html" target="_blank" title="">乔西计算器</a></li>
+    <li><a class="imgbtn" href="./atkcalc.html" target="_blank" title="">超三吉良计算器</a></li>
+    <li><a class="imgbtn" href="http://jojoss.jp/official/information" target="_blank" title="">官网公告</a></li>
+    <li>敌情报</li>
+    <ul>
+      <li><span class="closed" onclick="toggle(this)"><img border="0" width="250px" class="imgbtn" src="./img/II.jpg"/></span>
+      <ul class="hide">
+      <li><a href="https://gamy.jp/jojoss/kyukyoku-jotaro" target="_blank" title=""><img border="0" width="250px" class="imgbtn" src="./img/jiecheng.jpg"/></a>戒承</li>
+      <li><a href="https://gamy.jp/jojoss/kyukyoku-poru" target="_blank" title=""><img border="0" width="250px" class="imgbtn" src="./img/jiebo.jpg"/></a>戒波</li>
+      <li><a href="https://gamy.jp/jojoss/kyukyoku-kakyoin" target="_blank" title=""><img border="0" width="250px" class="imgbtn" src="./img/jiehua.jpg"/></a>戒花</li>
+      <li><a href="https://gamy.jp/jojoss/kyukyoku-joseph3" target="_blank" title=""><img border="0" width="250px" class="imgbtn" src="./img/dituqiao.jpg"/></a>地图乔</li>
+      <li><a href="https://gamy.jp/jojoss/kyukyoku-avu" target="_blank" title=""><img border="0" width="250px" class="imgbtn" src="./img/shaoya.jpg"/></a>烧鸭</li>
+      </ul>
+      </li>
+
+      <li><span class="closed" onclick="toggle(this)"><img border="0" width="250px" class="imgbtn" src="./img/I.jpg"/></span>
+      <ul class="hide">
+      <li><a  href="https://gamy.jp/jojoss/kyukyoku-joseph3" target="_blank" title=""><img border="0" width="250px" class="imgbtn" src="./img/jiema.jpg"/></a>戒妈</li>
+      <li><a  href="https://gamy.jp/jojoss/kyukyoku-wamu" target="_blank" title=""><img border="0" width="250px" class="imgbtn" src="./img/wamu.jpg"/></a>瓦木</li>
+      <li><a  href="https://gamy.jp/jojoss/kyukyoku-joseph" target="_blank" title=""><img border="0" width="250px" class="imgbtn" src="./img/kuqiao.jpg"/></a>哭乔</li>
+      <li><a  href="https://gamy.jp/jojoss/kyukyoku-bruford-tarukus" target="_blank" title=""><img border="0" width="250px" class="imgbtn" src="./img/shuangqi.jpg"/></a>双骑</li>
+      <li><a  href="https://gamy.jp/jojoss/kyukoku-gowan" target="_blank" title=""><img border="0" width="250px" class="imgbtn" src="./img/landa.jpg"/></a>蓝大</li>
+      </ul>
+      </li>
+
+      <li><span class="closed" onclick="toggle(this)"><img border="0" width="250px" class="imgbtn" src="./img/CC.jpg"/></span>
+      <ul class="hide">
+      <li><a href="https://gamy.jp/jojoss/expert-challenge-5" target="_blank" title=""><img border="0" width="250px" class="imgbtn" src="./img/hongjiliang.jpg"/></a>红吉良</li>
+      <li><a href="https://gamy.jp/jojoss/expert-4" target="_blank" title=""><img border="0" width="250px" class="imgbtn" src="./img/nuegou.jpg"/></a>虐狗草</li>
+      <li><a href="https://gamy.jp/jojoss/expert-challenge-3" target="_blank" title=""><img border="0" width="250px" class="imgbtn" src="./img/yuka.jpg"/></a>羽卡</li>
+      <li><a href="https://gamy.jp/jojoss/expert-challenge-2" target="_blank" title=""><img border="0" width="250px" class="imgbtn" src="./img/sd.jpg"/></a>sd</li>
+      <li><a href="https://gamy.jp/jojoss/expert-challenge-1" target="_blank" title=""><img border="0" width="250px" class="imgbtn" src="./img/xiangjiao.jpg"/></a>香蕉</li>
+      </ul>
+      </li>
+    
+    </ul>
+
+
+  </ul>
+</div>
+
+</body>
+</html>

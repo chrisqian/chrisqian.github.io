@@ -1,0 +1,114 @@
+ <!DOCTYPE html>
+<html> 
+<head>
+  <meta charset="utf-8">
+  <meta name="auther" content="放风" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>超三吉良计算器</title>
+  <style type="text/css">
+  .box{
+    display: -webkit-flex; /* Safari */
+    display:flex;
+    justify-content: center;
+  align-items: center;
+  }
+  .container{
+    height:auto;
+  }
+  </style>
+  <script type="text/javascript">
+var multi0skill = {
+0:100,1:250,2:263,3:276,4:289,5:303,6:316,7:329,8:342,9:355,10:368,11:382,12:395,13:408,14:421,15:434,16:447,17:461,18:474,19:489,20:500
+
+}
+var multi1skill = {
+  0:100,1:250,2:258,3:266,4:274,5:282,6:289,7:297,8:305,9:313,10:321,11:329,12:337,13:345,14:353,15:361,16:368,17:376,18:384,19:392,20:400 
+
+}
+var multi2skill = {
+  0:0,1:150,2:155,3:161,4:166,5:171,6:176,7:182,8:187,9:192,10:197,11:203,12:208,13:213,14:218,15:224,16:229,17:234,18:239,19:245,20:250 
+}
+
+
+  function immediately() {
+    var element = document.getElementById("mytext");
+    if ("\v" == "v") {
+     element.onpropertychange = webChange;
+    } else {
+     element.addEventListener("input", webChange, false);
+    } 
+    function webChange() {
+     if (element.value) {
+      document.getElementById("test").innerHTML = element.value * 1.7 *1.7
+     };
+    }
+   }
+function calc(){
+  var base = document.getElementById("baseatk").value;
+  var cap1 = document.getElementById("cap1").value*0.01;
+  var cap2 = document.getElementById("cap2").value*0.01;
+  var LINK = document.getElementById("LINK").value*0.01;
+  var panelatk = Math.round(Math.round(Math.round(base*(1+cap1))*(1+cap2))*(1+LINK));
+  var multi0V = multi0skill[document.getElementById("multi0").value]*0.01;
+  var multi1V = multi1skill[document.getElementById("multi1").value]*0.01;
+  var multi2V = multi2skill[document.getElementById("multi2").value]*0.01;
+if (multi2V == 0){
+  multi2V = 1;
+}else{
+  multi2V = multi2V * 1.5;
+
+};
+
+  document.getElementById("test").innerHTML = 
+  Math.round(
+    Math.round(
+      panelatk * 500 * multi0V* multi1V)
+    ).toLocaleString('en-US');
+
+  document.getElementById("test1").innerHTML = 
+  Math.round(
+    Math.round(
+      panelatk * 500 * multi0V)*multi1V*multi2V
+    ).toLocaleString('en-US');
+ 
+}
+  </script>
+ </head>
+ <body class="box" onload="calc()">
+<div class="container">
+  <span>我的吉良到底有多猛 @放风</span>
+  <hr>
+  <span>面板atk:</span><input type="number" name="textfield" id="baseatk" value="60000" max="1000000" oninput="calc()"/>
+  <br/>
+  <span>队长加攻1:</span><input type="number" name="textfield" id="cap1" value="70" max="100" oninput="calc()"/>%
+  <br/>
+  <span>队长加攻2:</span><input type="number" name="textfield" id="cap2" value="70" max="100" oninput="calc()"/>%
+  <br/>
+  <span>LINK:</span><input type="number" name="textfield" id="LINK" value="0" max="200" oninput="calc()"/>%
+  <hr>
+  <span>承花:</span><input type="number" name="textfield" id="multi0" value="0" min="0" max="20" oninput="calc()"/>被动
+  <br/>
+  <span>辣椒:</span><input type="number" name="textfield" id="multi1" value="8" min="0" max="20" oninput="calc()"/>被动
+  <br/>
+  <span>乔妈:</span><input type="number" name="textfield" id="multi2" value="8" min="0" max="20" oninput="calc()"/>被动
+  <hr>
+  <div>
+    一手输出：<span id="test"  style="color:red">还未输入</span>
+    <br/>
+    ONE MORE 输出：<span id="test1"  style="color:red">还未输入</span>
+    <br/><hr>
+    <span>20171209.公式修正</span><br/>
+    <span>1024.参数更新</span><br/>
+    <span>0211.修正了0被动时的计算错误。</span><br/>
+    <hr>
+  </div>
+  <ul>
+    <li><a  class="imgbtn" href="./smash.html" target="_blank" title="">翻牌计算器</a></li>
+    <li><a  class="imgbtn" href="./atkcalc.html" target="_blank" title="">超三吉良计算器</a></li>
+  </ul>
+</div>
+  <script type="text/javascript">
+   iimmediately();
+  </script>
+ </body>
+</html>

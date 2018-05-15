@@ -1,0 +1,38 @@
+ <!DOCTYPE html>
+<html> 
+<head>
+  <meta charset="utf-8">
+  <meta name="auther" content="fq" />
+  <title>监听输入框值的即时变化 onpropertychange oninput</title>
+  <script type="text/javascript">
+   function immediately() {
+    var element = document.getElementById("mytext");
+    if ("\v" == "v") {
+     element.onpropertychange = webChange;
+    } else {
+     element.addEventListener("input", webChange, false);
+    } 
+ function webChange() {
+     if (element.value) {
+      document.getElementById("test").innerHTML = element.value
+     };
+    }
+   }
+  </script>
+ </head>
+ <body>
+  <input type="text" name="textfield" oninput="document.getElementById('webtest').innerHTML=this.value;" onpropertychange="document.getElementById('webtest').innerHTML=this.value;" />
+  <div>您输入的值为：<span id="webtest">还未输入</span></div>
+  <br />
+  <br />
+  <br />
+  <br />
+  <br /> 写在JS中的示例：
+  <input type="text" name="textfield" id="mytext" />
+  <input type="number" name="" id="" min="0" max="1"/>
+  <div>您输入的值为：<span id="test">还未输入</span></div>
+  <script type="text/javascript">
+   immediately();
+  </script>
+ </body>
+</html>
