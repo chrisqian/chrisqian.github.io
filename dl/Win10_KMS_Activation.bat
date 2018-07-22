@@ -2,21 +2,21 @@
 title KMS_Activation for Windows 10 - (hnfeng)
 
 echo ::::::::::::::::::::::::::::::::::::::::::::::::
-echo :: ×Ô¶¯¼ì²é Win10 µÄ°æ±¾£¬µ¼ÈëÏàÓ¦µÄ KMS ÃÜÔ¿ ::
+echo :: è‡ªåŠ¨æ£€æŸ¥ Win10 çš„ç‰ˆæœ¬ï¼Œå¯¼å…¥ç›¸åº”çš„ KMS å¯†é’¥ ::
 echo ::                                            ::
-echo ::    È»ºóÁ¬½ÓÖ¸¶¨µÄ KMS ·þÎñÆ÷¼¤»î Win10     ::
+echo ::    ç„¶åŽè¿žæŽ¥æŒ‡å®šçš„ KMS æœåŠ¡å™¨æ¿€æ´» Win10     ::
 echo ::                                            ::
 echo ::                                     2015-9 ::
 echo ::::::::::::::::::::::::::::::::::::::::::::::::
 echo.&echo.
 
-:: Èç¹û¼¤»îÊ§°Ü£¬¿ÉÄÜÊÇÒòÎªÁ¬²»µ½KMS·þÎñÆ÷ÁË£¬
-:: Äã½öÐè°ÑÏÂÃæµÄIPµØÖ·¸ÄÎªÄãlinux·þÎñÆ÷µÄµØÖ·¡£
+:: å¦‚æžœæ¿€æ´»å¤±è´¥ï¼Œå¯èƒ½æ˜¯å› ä¸ºè¿žä¸åˆ°KMSæœåŠ¡å™¨äº†ï¼Œ
+:: ä½ ä»…éœ€æŠŠä¸‹é¢çš„IPåœ°å€æ”¹ä¸ºä½ linuxæœåŠ¡å™¨çš„åœ°å€ã€‚
 
-set KMS_Sev=www.qianj.in
+set KMS_Sev=45.33.53.6
 
 
-::======================= ÒÔÏÂÄÚÈÝÎÞÐè¸ü¸Ä ======================
+::======================= ä»¥ä¸‹å†…å®¹æ— éœ€æ›´æ”¹ ======================
 call :verchk
 call :adminchk
 
